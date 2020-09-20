@@ -48,7 +48,7 @@
             {% for api in api_info %}
               <tr>
                 {# {% for api in items %} #}
-                  {% if api.0 == "Error page!" %}
+                  {% if api.1 == "--" %}
                     <td> {{api.0}} </td>
                     <td> {{api.1}} </td>
                     <td> {{api.2}} </td>
@@ -75,10 +75,7 @@
 
           </tbody>
         </table>
-
-
-
-
+        <br><br><br><br>
   </div>
 
 

@@ -37,7 +37,8 @@ def add_stock(request):
         form = StockForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, ("Stock has been added to list"))
+            ticker = form.cleaned_data['ticker']
+            messages.success(request, ("Stock("+ ticker +") has been added to list"))
             return redirect(reverse('add_stock'))
     else:
         api_info = []
@@ -53,7 +54,7 @@ def add_stock(request):
                 api_response = json.loads(api_request.content)
 
             except Exception as e:
-                api_info.append(["Error page!", "--","--", "--",
+                api_info.append([quote_name.ticker, "--","--", "--",
                                             "--", "--","--", quote_name.id])
                 messages.success(request, ("Couldn't find stock(" +str(quote_name)+ "), please try again with valid ticker!"))
                 continue

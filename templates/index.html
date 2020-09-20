@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-9">
+
+        {% if api %}
+          {% if api == "Error page!" %}
+            <h2>Please reload or try again later! Server might be busy.</h2>
+
+          {% else %}
+
+            <h1>{{api.companyName}}</h1><br>
+            <p> Price: ${{api.latestPrice}} </p>
+            <p> Previous Close: {{api.previousClose}} </p>
+            <p> Market Cap: {{api.marketCap}} </p>
+            <p> YTD Change: {{api.ytdChange}} </p>
+            <p> 52wk High: {{api.week52High}}</p>
+            <p> 52 wk low: {{api.week52Low}} </p>
+
+            {# {% for key, item in api.items %} #}
+              {# {{key}}: {{item}} <br> #}
+            {# {% endfor %} #}
+          {% endif %}
+
+        {% else %}
+
+          {% if quote_name != "none" %}
+          <h2>Didn't found Stock for {{quote_name}}, please try another!</h2>
+          {% endif %}
+
+        {% endif %}
+
+      </div>
+
+      <div class="col-md-3">
+        <br><br><br>
+        <h6>Search query help</h6>
+        <br>
+        <li> Search fb to get stock information of facebook.</li>
+        <li> Search goog to get stock information of google.</li>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

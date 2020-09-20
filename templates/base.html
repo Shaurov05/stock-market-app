@@ -19,7 +19,7 @@
 
     <div class="holder">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Weather Now</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Find Stock</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,12 +30,16 @@
               <a class="nav-link" href="{% url 'about' %}">About<span class="sr-only">(current)</span></a>
             </li>
 
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'add_stock' %}">Add Stock<span class="sr-only">(current)</span></a>
+            </li>
+
 
           </ul>
 
           <form class="form-inline my-2 my-lg-0" action="{% url 'index' %}" method="POST">
             {% csrf_token %}
-            <input name="quote_name" class="form-control mr-sm-2" type="search" 
+            <input name="quote_name" class="form-control mr-sm-2" type="search"
             placeholder="Get Stock Quote" aria-label="Search">
             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Stock Quote</button>
           </form>
